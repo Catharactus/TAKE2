@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class InitNewCard : MonoBehaviour
 {
-    private int DayTracker;
+    private string DayTracker;
 
-    GameObject[] allCardForToday;
+    List<GameObject> allCardForToday;
 
     public void InitCard(string CardTag)
     {
+
+        //reset allCardForToday
+        allCardForToday = new List<GameObject>();
+        //Debug.Log("card before" + allCardForToday.Count);
+
         //Debug.Log(FindCorrectInitPreset(Tag));
         int preset = FindCorrectInitPreset(CardTag);
 
@@ -73,33 +78,74 @@ public class InitNewCard : MonoBehaviour
         //get the day by day tracker 
 
         //asign daytracker
+        DayTracker = "one";
     }
 
     private void GetAllCardForToday()
     {
         //assign all card for today to allcardforToday
+
+        GameObject[] allObjGame = GameObject.FindObjectsOfType<GameObject>();
+
+        foreach (GameObject obj in allObjGame)
+        {
+            string objTag = obj.tag;
+
+            if(objTag.Contains(DayTracker))
+            {
+                //add gameobject to allCardsforToday
+                allCardForToday.Add(obj);
+            }
+        }
+
+        //Debug.Log("Card after add" + allCardForToday.Count);
     }
 
     private void InitCardAsWork()
     {
         //in allcardForToday find the one that are work related 
+        List<GameObject> workCard = new List<GameObject>();
 
-        return;
+        Vector3 instancedPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f);
+
+        foreach (GameObject obj in allCardForToday)
+        {
+            if (obj.tag.Contains("work"))
+            {
+                Instantiate(obj, instancedPosition, obj.transform.rotation);
+                workCard.Add(obj);
+            }
+        }
     }
 
     private void InitCardAsMood()
     {
         //in allcardForToday find the one that are mood related 
+        List<GameObject> moodCard = new List<GameObject>();
 
-        return;
+        foreach (GameObject obj in allCardForToday)
+        {
+            if (obj.tag.Contains("mood"))
+            {
+                Instantiate(obj, transform.position, obj.transform.rotation);
+                moodCard.Add(obj);
+            }
+        }
     }
 
     private void InitCardAsLeisure()
     {
         //in allcardForToday find the one that are leisure related 
+        List<GameObject> leisureCard = new List<GameObject>();
 
-
-        return;
+        foreach (GameObject obj in allCardForToday)
+        {
+            if (obj.tag.Contains("leisure"))
+            {
+                Instantiate(obj, transform.position, obj.transform.rotation);
+                leisureCard.Add(obj);
+            }
+        }
     }
 
     private void InstanceCard(GameObject[] cards, GameObject[] Positions)

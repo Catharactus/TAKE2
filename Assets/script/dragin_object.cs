@@ -10,6 +10,7 @@ public class dragin_object : MonoBehaviour
     bool placeIsCorrect;
 
     Vector3 blockInitialPosition;
+    Vector3 dragingOffset;
 
     public GameObject Placeur;
 
@@ -30,6 +31,7 @@ public class dragin_object : MonoBehaviour
 
     public void InitBlok()
     {
+        dragingOffset = transform.position - Placeur.transform.position;
         blockInitialPosition = Placeur.transform.position;
         cells = GameObject.FindGameObjectsWithTag("plan");
     }
@@ -146,7 +148,7 @@ public class dragin_object : MonoBehaviour
     {
         float elaspeTime = 0f;
         Vector3 currentBlockPos = transform.position;
-        Vector3 newTransform = new Vector3(cell.transform.position.x, cell.transform.position.y, Placeur.transform.position.z);
+        Vector3 newTransform = new Vector3(cell.transform.position.x, cell.transform.position.y, Placeur.transform.position.z-0.5f);
 
         while (elaspeTime < placingTime)
         {
@@ -156,5 +158,6 @@ public class dragin_object : MonoBehaviour
         }
 
         Placeur.transform.position = newTransform;
+        transform.position = Placeur.transform.position + dragingOffset;
     }
 }
