@@ -9,6 +9,8 @@ TagManager:
   - leisure
   - mood
   - work
+  - workPlace
+  - leisurePlace
   layers:
   - Default
   - TransparentFX
