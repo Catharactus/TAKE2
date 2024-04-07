@@ -214,7 +214,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 15744f1069b93994fa81e24a7e2669a9,
         type: 3}
       propertyPath: m_Name
-      value: untitled (1)
+      value: uitest
       objectReference: {fileID: 0}
     - target: {fileID: 6745302439343835087, guid: 15744f1069b93994fa81e24a7e2669a9,
         type: 3}
@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 1227709559}
   - component: {fileID: 1227709558}
   - component: {fileID: 1227709557}
+  - component: {fileID: 1227709561}
   m_Layer: 0
   m_Name: DRAGTEST
   m_TagString: Untagged
@@ -586,6 +587,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1227709561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227709556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d652d3817416c4648b3495bf4660f006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returnTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
