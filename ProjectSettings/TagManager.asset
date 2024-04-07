@@ -6,6 +6,9 @@ TagManager:
   tags:
   - plan
   - day
+  - leisure
+  - mood
+  - work
   layers:
   - Default
   - TransparentFX

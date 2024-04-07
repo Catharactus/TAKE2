@@ -21,15 +21,15 @@ public class dragin_object : MonoBehaviour
 
     private void Start()
     {
-        InitBlok();
 
-        cells = GameObject.FindGameObjectsWithTag("plan");
+        InitBlok();
 
     }
 
     public void InitBlok()
     {
         blockInitialPosition = transform.position;
+        cells = GameObject.FindGameObjectsWithTag("plan");
     }
     
     private Vector3 GetMouseWorldPosition()
@@ -71,7 +71,7 @@ public class dragin_object : MonoBehaviour
         //check if the tile is correct for the block
         placeIsCorrect = true;
 
-        if(distanceIsCorrect)
+        if(distanceIsCorrect && placeIsCorrect)
         {
             //place tile
             StartCoroutine(PlaceCell(closestCell));
