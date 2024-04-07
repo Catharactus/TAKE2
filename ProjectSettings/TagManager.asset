@@ -11,6 +11,12 @@ TagManager:
   - work
   - workPlace
   - leisurePlace
+  - two_work
+  - one_work
+  - two_leisure
+  - one_leisure
+  - two_mood
+  - one_mood
   layers:
   - Default
   - TransparentFX

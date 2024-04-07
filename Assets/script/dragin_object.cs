@@ -11,6 +11,8 @@ public class dragin_object : MonoBehaviour
 
     Vector3 blockInitialPosition;
 
+    public GameObject Placeur;
+
     public float returnTime;
     public float correctMinimalDistance;
     public float placingTime;
@@ -28,7 +30,7 @@ public class dragin_object : MonoBehaviour
 
     public void InitBlok()
     {
-        blockInitialPosition = transform.position;
+        blockInitialPosition = Placeur.transform.position;
         cells = GameObject.FindGameObjectsWithTag("plan");
     }
     
@@ -52,14 +54,14 @@ public class dragin_object : MonoBehaviour
         //check the closest tile to mouse position 
         closestCell = FindClosestCell();
 
-        Debug.Log(Vector3.Distance(closestCell.transform.position, transform.position));
+        Debug.Log(Vector3.Distance(closestCell.transform.position, Placeur.transform.position));
 
     }
 
     private void OnMouseUp()
     {
         //check the closest tile to mouse position 
-        if(Vector3.Distance(closestCell.transform.position, transform.position) <= correctMinimalDistance)
+        if(Vector3.Distance(closestCell.transform.position, Placeur.transform.position) <= correctMinimalDistance)
         {
             distanceIsCorrect = true;
         }
@@ -92,7 +94,7 @@ public class dragin_object : MonoBehaviour
 
         foreach(GameObject cell in cells)
         {
-            float currentDistance = Vector3.Distance(transform.position, cell.transform.position);
+            float currentDistance = Vector3.Distance(Placeur.transform.position, cell.transform.position);
 
             if(currentDistance <= smallestDistance)
             {
@@ -128,7 +130,7 @@ public class dragin_object : MonoBehaviour
     {
 
         float elaspeTime = 0f;
-        Vector3 currentBlockPos = transform.position;
+        Vector3 currentBlockPos = Placeur.transform.position;
 
         while (elaspeTime < returnTime)
         {
@@ -144,7 +146,7 @@ public class dragin_object : MonoBehaviour
     {
         float elaspeTime = 0f;
         Vector3 currentBlockPos = transform.position;
-        Vector3 newTransform = new Vector3(cell.transform.position.x, cell.transform.position.y, transform.position.z);
+        Vector3 newTransform = new Vector3(cell.transform.position.x, cell.transform.position.y, Placeur.transform.position.z);
 
         while (elaspeTime < placingTime)
         {
@@ -153,6 +155,6 @@ public class dragin_object : MonoBehaviour
             yield return null;  
         }
 
-        transform.position = newTransform;
+        Placeur.transform.position = newTransform;
     }
 }

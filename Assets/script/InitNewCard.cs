@@ -84,34 +84,28 @@ public class InitNewCard : MonoBehaviour
     {
         //in allcardForToday find the one that are work related 
 
-        //instance the first one 
-
-        //instance the second one if there is 
         return;
     }
 
     private void InitCardAsMood()
     {
-        //in allcardForToday find the one that are work related 
+        //in allcardForToday find the one that are mood related 
 
-        //instance the first one 
-
-        //instance the second one if there is 
         return;
     }
 
     private void InitCardAsLeisure()
     {
-        //in allcardForToday find the one that are work related 
+        //in allcardForToday find the one that are leisure related 
 
-        //instance the first one 
 
-        //instance the second one if there is 
         return;
     }
 
-    private void InstanceCard(GameObject cards)
+    private void InstanceCard(GameObject[] cards, GameObject[] Positions)
     {
+        //instance first card at the first position
 
+        //instance the second card if there is at pos 2 
     }
 }
