@@ -17,16 +17,28 @@ public class dragin_object : MonoBehaviour
     public float returnTime;
     public float correctMinimalDistance;
     public float placingTime;
+    public float timeToRotate = 0.2f;
 
     GameObject[] cells;
 
     private GameObject closestCell;
-
+    private GameObject block;
+    private List<GameObject> blocks;
+ 
     public void InitBlok()
     {
         dragingOffset = transform.position - Placeur.transform.position;
         blockInitialPosition = transform.position;
         cells = GameObject.FindGameObjectsWithTag("plan");
+
+        //get the block in the variable
+        Transform baseFinder = transform;
+        Transform placeur = baseFinder.transform.GetChild(0);
+        Transform blockTransform = placeur.transform.GetChild(0);
+
+        block = blockTransform.gameObject;
+
+        Debug.Log(block);
     }
     
     private Vector3 GetMouseWorldPosition()
@@ -49,7 +61,12 @@ public class dragin_object : MonoBehaviour
         //check the closest tile to mouse position 
         closestCell = FindClosestCell();
 
-        Debug.Log(Vector3.Distance(closestCell.transform.position, Placeur.transform.position));
+        //Debug.Log(Vector3.Distance(closestCell.transform.position, Placeur.transform.position));
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(RotateBlock());
+        }
 
     }
 
@@ -66,7 +83,7 @@ public class dragin_object : MonoBehaviour
         }
 
         //check if the tile is correct for the block
-        placeIsCorrect = true;
+        placeIsCorrect = isPlaceCorrect();
 
         if(distanceIsCorrect && placeIsCorrect)
         {
@@ -152,6 +169,26 @@ public class dragin_object : MonoBehaviour
         }
 
         transform.position = newNewTransform;
-        //transform.position = Placeur.transform.position;
+    }
+
+    private bool isPlaceCorrect()
+    {
+        return true;
+    }
+
+    private IEnumerator RotateBlock()
+    {
+        float elaspeTime = 0f;
+        Transform blockTransform = block.transform;
+        Vector3 blockPosition = block.GetComponent<Renderer>().bounds.center;
+        Quaternion rotatedBlock = Quaternion.Euler(blockTransform.rotation.eulerAngles + new Vector3(0f, 0f, 90f));
+
+
+        while (elaspeTime < timeToRotate)
+        {
+            blockTransform.rotation = Quaternion.Lerp(blockTransform.rotation, rotatedBlock, elaspeTime / timeToRotate);
+            elaspeTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }

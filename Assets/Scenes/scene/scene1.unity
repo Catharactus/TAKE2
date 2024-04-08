@@ -656,7 +656,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3609794692725114108, guid: 9353bacd55131444f82e547674a97fb8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1019723559}
   m_SourcePrefab: {fileID: 100100000, guid: 9353bacd55131444f82e547674a97fb8, type: 3}
 --- !u!4 &600821143 stripped
 Transform:
@@ -1351,6 +1355,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1869011535}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1019723557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3609794692725114108, guid: 9353bacd55131444f82e547674a97fb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 578776548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1019723559
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019723557}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &1070864038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2512,6 +2564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cardDayTwoMood
       objectReference: {fileID: 0}
+    - target: {fileID: 7363548221274646679, guid: e14e45fd45f84bc4cb777c2744dff767,
+        type: 3}
+      propertyPath: m_TagString
+      value: two_mood
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2653,6 +2710,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cardDayTwoLeisure
       objectReference: {fileID: 0}
+    - target: {fileID: 6592762471511361156, guid: 133ca7586dd5b53449f08dd23a2d308c,
+        type: 3}
+      propertyPath: m_TagString
+      value: two_leisure
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2720,6 +2782,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631337638339507605, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_TagString
+      value: onglet
       objectReference: {fileID: 0}
     - target: {fileID: 8272180356896592202, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
         type: 3}
@@ -3039,6 +3106,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cardDayTwoWork
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934236650289370197, guid: c32d665c88d8a1d4fba72cb423bd26c1,
+        type: 3}
+      propertyPath: m_TagString
+      value: two_work
       objectReference: {fileID: 0}
     - target: {fileID: 7902484112493385806, guid: c32d665c88d8a1d4fba72cb423bd26c1,
         type: 3}

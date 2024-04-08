@@ -19,8 +19,6 @@ public class LevelKing : MonoBehaviour
 
     public void UpdateCurrentDay(int day)
     {
-
-        //Debug.Log(day);
         switch(day)
         {
             case 1:
@@ -39,13 +37,19 @@ public class LevelKing : MonoBehaviour
                 currentDay = dayFive;
                 break;
         }
-
-        //Debug.Log(currentDay);
     }
 
     public void DealWithYesterdayCards(List<GameObject> yesterdaysCards)
     {
+        if(yesterdaysCards.Count != 0)
+        {
+            foreach(GameObject yesterday in yesterdaysCards)
+            {
 
+                yesterday.SetActive(false);
+
+            }
+        }
     }
 
 }

@@ -19,7 +19,10 @@ public class InitNewCard : MonoBehaviour
 
         GameObject level = GameObject.FindGameObjectWithTag("level");
         LevelKing levelKing = level.GetComponent<LevelKing>();
-        levelKing.DealWithYesterdayCards(todaysCard);
+        if(todaysCard != null )
+        {
+            levelKing.DealWithYesterdayCards(todaysCard);
+        }
 
         todaysCard = new List<GameObject>();
         Debug.Log("card before" + allCardForToday.Count);

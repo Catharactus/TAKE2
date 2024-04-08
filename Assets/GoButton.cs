@@ -27,7 +27,7 @@ public class GoButton : MonoBehaviour
         level.UpdateCurrentDay(currentDay);
 
         GameObject Onglet = GameObject.FindGameObjectWithTag("onglet");
-        OngletDelaer scriptOnglet = GetComponent<OngletDelaer>();
+        OngletDelaer scriptOnglet = Onglet.GetComponent<OngletDelaer>();
         scriptOnglet.InitOnglets();
     }
 
