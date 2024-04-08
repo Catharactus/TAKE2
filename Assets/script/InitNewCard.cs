@@ -8,22 +8,32 @@ public class InitNewCard : MonoBehaviour
     private string DayTracker;
 
     List<GameObject> allCardForToday;
+    List<GameObject> todaysCard;
 
     public void InitCard(string CardTag)
     {
+        Debug.Log("init for tag " + CardTag);
 
         //reset allCardForToday
         allCardForToday = new List<GameObject>();
-        //Debug.Log("card before" + allCardForToday.Count);
+
+        GameObject level = GameObject.FindGameObjectWithTag("level");
+        LevelKing levelKing = level.GetComponent<LevelKing>();
+        levelKing.DealWithYesterdayCards(todaysCard);
+
+        todaysCard = new List<GameObject>();
+        Debug.Log("card before" + allCardForToday.Count);
 
         //Debug.Log(FindCorrectInitPreset(Tag));
         int preset = FindCorrectInitPreset(CardTag);
 
         UpdateDaytracker();
+        Debug.Log("dayTracker equal after update " + DayTracker);
 
         GetAllCardForToday();
+        Debug.Log("Card after add" + allCardForToday.Count);
 
-        switch(preset)
+        switch (preset)
         {
             default:
                 Debug.Log("cardFailled");
@@ -87,6 +97,8 @@ public class InitNewCard : MonoBehaviour
 
         GameObject[] allObjGame = GameObject.FindObjectsOfType<GameObject>();
 
+        //Debug.Log("todays day " + DayTracker);
+
         foreach (GameObject obj in allObjGame)
         {
             string objTag = obj.tag;
@@ -98,14 +110,10 @@ public class InitNewCard : MonoBehaviour
             }
         }
 
-        //Debug.Log("Card after add" + allCardForToday.Count);
     }
 
     private void InitCardAsWork()
     {
-        //in allcardForToday find the one that are work related 
-        List<GameObject> workCard = new List<GameObject>();
-
         Vector3 instancedPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f);
 
         foreach (GameObject obj in allCardForToday)
@@ -113,7 +121,7 @@ public class InitNewCard : MonoBehaviour
             if (obj.tag.Contains("_work"))
             {
                 obj.transform.position = instancedPosition;
-                workCard.Add(obj);
+                todaysCard.Add(obj);
 
                 //Debug.Log(obj);
 
@@ -130,9 +138,6 @@ public class InitNewCard : MonoBehaviour
 
     private void InitCardAsMood()
     {
-        //in allcardForToday find the one that are mood related 
-        List<GameObject> moodCard = new List<GameObject>();
-
         Vector3 instancedPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f);
 
         foreach (GameObject obj in allCardForToday)
@@ -140,7 +145,7 @@ public class InitNewCard : MonoBehaviour
             if (obj.tag.Contains("_mood"))
             {
                 obj.transform.position = instancedPosition;
-                moodCard.Add(obj);
+                todaysCard.Add(obj);
 
                 Transform first_child = obj.transform.GetChild(0);
                 Transform drag_helper = first_child.transform.GetChild(0);
@@ -153,9 +158,6 @@ public class InitNewCard : MonoBehaviour
 
     private void InitCardAsLeisure()
     {
-        //in allcardForToday find the one that are leisure related 
-        List<GameObject> leisureCard = new List<GameObject>();
-
         Vector3 instancedPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f);
 
         foreach (GameObject obj in allCardForToday)
@@ -163,7 +165,7 @@ public class InitNewCard : MonoBehaviour
             if (obj.tag.Contains("_leisure"))
             {
                 obj.transform.position = instancedPosition;
-                leisureCard.Add(obj);
+                todaysCard.Add(obj);
 
                 Transform first_child = obj.transform.GetChild(0);
                 Transform drag_helper = first_child.transform.GetChild(0);

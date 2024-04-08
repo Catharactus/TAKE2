@@ -6,7 +6,7 @@ public class GoButton : MonoBehaviour
 {
 
     Vector3 mousePositionOffset;
-    int currentDay = 0;
+    int currentDay;
 
     LevelKing level;
 
@@ -15,8 +15,8 @@ public class GoButton : MonoBehaviour
         currentDay = 1;
 
         GameObject levelHolder = GameObject.FindGameObjectWithTag("level");
-        Debug.Log(levelHolder);
         level = levelHolder.GetComponent<LevelKing>();
+        level.UpdateCurrentDay(currentDay);
         
     }
 
@@ -25,6 +25,10 @@ public class GoButton : MonoBehaviour
         currentDay++;
 
         level.UpdateCurrentDay(currentDay);
+
+        GameObject Onglet = GameObject.FindGameObjectWithTag("onglet");
+        OngletDelaer scriptOnglet = GetComponent<OngletDelaer>();
+        scriptOnglet.InitOnglets();
     }
 
 }

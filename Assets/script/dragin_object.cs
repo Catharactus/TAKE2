@@ -22,11 +22,6 @@ public class dragin_object : MonoBehaviour
 
     private GameObject closestCell;
 
-    private void Start()
-    {
-        //InitBlok();
-    }
-
     public void InitBlok()
     {
         dragingOffset = transform.position - Placeur.transform.position;

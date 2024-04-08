@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelKing : MonoBehaviour
 {
-    public string currentDay;
+    public string currentDay = "one";
     
     string dayOne = "one";
     string dayTwo = "two";
@@ -19,6 +19,8 @@ public class LevelKing : MonoBehaviour
 
     public void UpdateCurrentDay(int day)
     {
+
+        //Debug.Log(day);
         switch(day)
         {
             case 1:
@@ -38,7 +40,12 @@ public class LevelKing : MonoBehaviour
                 break;
         }
 
-        Debug.Log(currentDay);
+        //Debug.Log(currentDay);
+    }
+
+    public void DealWithYesterdayCards(List<GameObject> yesterdaysCards)
+    {
+
     }
 
 }
