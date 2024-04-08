@@ -101,16 +101,20 @@ public class dragin_object : MonoBehaviour
 
         foreach(GameObject placeur in placeurs)
         {
+
             bool placeurCheck = false;
-            foreach(GameObject cell in cells)
+
+            foreach(GameObject cell in closestCell)
             {
                 if (Vector3.Distance(cell.transform.position, placeur.transform.position) <= correctMinimalDistance)
                 {
                     placeurCheck = true;
+                    Debug.Log("placeur " + placeur + "at pos " + Vector3.Distance(cell.transform.position, placeur.transform.position));
                 }
+
             }
 
-            if(placeurCheck == true)
+            if(placeurCheck != true)
             {
                 placeursCheck = false;
             }
@@ -139,6 +143,7 @@ public class dragin_object : MonoBehaviour
         {
             float smallestDistance = 200f;
 
+            GameObject currentClosestCell = null;
             //iterate each cell
             foreach(GameObject cell in cells)
             {  
@@ -148,13 +153,15 @@ public class dragin_object : MonoBehaviour
                 if (currentDistance <= smallestDistance)
                 {
                     smallestDistance = currentDistance;
+                    currentClosestCell = cell;
 
-                    closestCell.Add(cell);
                 }
             }
 
+            closestCell.Add(currentClosestCell);
         }
-        Debug.Log(closestCell.Count);
+
+        //Debug.Log(closestCell.Count);
 
         foreach(GameObject cell in cells)
         {

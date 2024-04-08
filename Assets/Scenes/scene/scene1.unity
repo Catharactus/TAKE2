@@ -191,6 +191,11 @@ PrefabInstance:
       propertyPath: placingTime
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 3737871724695219685, guid: 9353bacd55131444f82e547674a97fb8,
+        type: 3}
+      propertyPath: correctMinimalDistance
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
