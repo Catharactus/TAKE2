@@ -74,11 +74,11 @@ public class InitNewCard : MonoBehaviour
     private void UpdateDaytracker()
     {
         //ref the high level script
+        GameObject level = GameObject.FindGameObjectWithTag("level");
+        LevelKing levelKing = level.GetComponent<LevelKing>();
 
         //get the day by day tracker 
-
-        //asign daytracker
-        DayTracker = "one";
+        DayTracker = levelKing.GetCurrentDay();
     }
 
     private void GetAllCardForToday()
@@ -110,13 +110,17 @@ public class InitNewCard : MonoBehaviour
 
         foreach (GameObject obj in allCardForToday)
         {
-            if (obj.tag.Contains("work"))
+            if (obj.tag.Contains("_work"))
             {
                 obj.transform.position = instancedPosition;
                 workCard.Add(obj);
 
+                //Debug.Log(obj);
+
                 Transform first_child = obj.transform.GetChild(0);
+                //Debug.Log(first_child);
                 Transform drag_helper = first_child.transform.GetChild(0);
+                //Debug.Log(drag_helper);
 
                 dragin_object script = drag_helper.GetComponent<dragin_object>();
                 script.InitBlok();
@@ -133,7 +137,7 @@ public class InitNewCard : MonoBehaviour
 
         foreach (GameObject obj in allCardForToday)
         {
-            if (obj.tag.Contains("mood"))
+            if (obj.tag.Contains("_mood"))
             {
                 obj.transform.position = instancedPosition;
                 moodCard.Add(obj);
@@ -156,7 +160,7 @@ public class InitNewCard : MonoBehaviour
 
         foreach (GameObject obj in allCardForToday)
         {
-            if (obj.tag.Contains("leisure"))
+            if (obj.tag.Contains("_leisure"))
             {
                 obj.transform.position = instancedPosition;
                 leisureCard.Add(obj);

@@ -6,17 +6,25 @@ public class GoButton : MonoBehaviour
 {
 
     Vector3 mousePositionOffset;
+    int currentDay = 0;
 
-    private Vector3 GetMouseWorldPosition()
+    LevelKing level;
+
+    private void Start()
     {
-        // Capture the mouse position and convert it to world coordinates
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        currentDay = 1;
+
+        GameObject levelHolder = GameObject.FindGameObjectWithTag("level");
+        Debug.Log(levelHolder);
+        level = levelHolder.GetComponent<LevelKing>();
+        
     }
 
     private void OnMouseDown()
     {
-        // Calculate the offset between the object's position and the mouse position
-        mousePositionOffset = gameObject.transform.position - GetMouseWorldPosition();
+        currentDay++;
+
+        level.UpdateCurrentDay(currentDay);
     }
 
 }

@@ -17,6 +17,8 @@ TagManager:
   - one_leisure
   - two_mood
   - one_mood
+  - level
+  - onglet
   layers:
   - Default
   - TransparentFX
