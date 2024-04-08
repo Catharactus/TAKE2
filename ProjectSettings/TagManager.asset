@@ -19,6 +19,8 @@ TagManager:
   - one_mood
   - level
   - onglet
+  - placeur
+  - block
   layers:
   - Default
   - TransparentFX

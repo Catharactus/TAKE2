@@ -21,24 +21,52 @@ public class dragin_object : MonoBehaviour
 
     GameObject[] cells;
 
+    List<GameObject> fullfamily = new List<GameObject>();
+
     private GameObject closestCell;
     private GameObject block;
-    private List<GameObject> blocks;
+    private List<GameObject> placeurs = new List<GameObject>();
+
+    private void explorefamily(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            // Process the child GameObject (e.g., add it to a list)
+            fullfamily.Add(child.gameObject);
+
+            // Recurse into nested children
+            explorefamily(child);
+        }
+    }
  
     public void InitBlok()
     {
-        dragingOffset = transform.position - Placeur.transform.position;
-        blockInitialPosition = transform.position;
         cells = GameObject.FindGameObjectsWithTag("plan");
+        
+        explorefamily(gameObject.transform);
+        
+        //find placeurs 
+        foreach(GameObject child in fullfamily)
+        {
+            if(child.tag == ("placeur"))
+            {
+                placeurs.Add(child);
+            }
+        }
+        
+        Debug.Log(placeurs.Count);
+        //dragingOffset = transform.position - Placeur.transform.position;
+        //blockInitialPosition = transform.position;
+
 
         //get the block in the variable
-        Transform baseFinder = transform;
-        Transform placeur = baseFinder.transform.GetChild(0);
-        Transform blockTransform = placeur.transform.GetChild(0);
+        //Transform baseFinder = transform;
+        //Transform placeur = baseFinder.transform.GetChild(0);
+        //Transform blockTransform = placeur.transform.GetChild(0);
 
-        block = blockTransform.gameObject;
+        //block = blockTransform.gameObject;
 
-        Debug.Log(block);
+        //Debug.Log(block);
     }
     
     private Vector3 GetMouseWorldPosition()
