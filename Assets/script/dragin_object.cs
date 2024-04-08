@@ -12,8 +12,6 @@ public class dragin_object : MonoBehaviour
     Vector3 blockInitialPosition;
     Vector3 dragingOffset;
 
-    public GameObject Placeur;
-
     public float returnTime;
     public float correctMinimalDistance;
     public float placingTime;
@@ -23,7 +21,7 @@ public class dragin_object : MonoBehaviour
 
     List<GameObject> fullfamily = new List<GameObject>();
 
-    private GameObject closestCell;
+    private List<GameObject> closestCell = new List<GameObject>();
     private GameObject block;
     private List<GameObject> placeurs = new List<GameObject>();
 
@@ -54,10 +52,9 @@ public class dragin_object : MonoBehaviour
             }
         }
         
-        Debug.Log(placeurs.Count);
+        blockInitialPosition = transform.position;
+        
         //dragingOffset = transform.position - Placeur.transform.position;
-        //blockInitialPosition = transform.position;
-
 
         //get the block in the variable
         //Transform baseFinder = transform;
@@ -87,7 +84,7 @@ public class dragin_object : MonoBehaviour
         transform.position = GetMouseWorldPosition() + mousePositionOffset;
 
         //check the closest tile to mouse position 
-        closestCell = FindClosestCell();
+        FindClosestCell();
 
         //Debug.Log(Vector3.Distance(closestCell.transform.position, Placeur.transform.position));
 
@@ -100,23 +97,31 @@ public class dragin_object : MonoBehaviour
 
     private void OnMouseUp()
     {
-        //check the closest tile to mouse position 
-        if(Vector3.Distance(closestCell.transform.position, Placeur.transform.position) <= correctMinimalDistance)
+        bool placeursCheck = true;
+
+        foreach(GameObject placeur in placeurs)
         {
-            distanceIsCorrect = true;
-        }
-        else
-        {
-            distanceIsCorrect= false;
+            bool placeurCheck = false;
+            foreach(GameObject cell in cells)
+            {
+                if (Vector3.Distance(cell.transform.position, placeur.transform.position) <= correctMinimalDistance)
+                {
+                    placeurCheck = true;
+                }
+            }
+
+            if(placeurCheck == true)
+            {
+                placeursCheck = false;
+            }
         }
 
-        //check if the tile is correct for the block
-        placeIsCorrect = isPlaceCorrect();
+        Debug.Log(placeursCheck);
 
-        if(distanceIsCorrect && placeIsCorrect)
+        if(placeursCheck)
         {
             //place tile
-            StartCoroutine(PlaceCell(closestCell));
+            //StartCoroutine(PlaceCell(closestCell));
         }
         else
         {
@@ -126,25 +131,32 @@ public class dragin_object : MonoBehaviour
 
     }
 
-    private GameObject FindClosestCell()
+    private void FindClosestCell()
     {
-        float smallestDistance = 200f;
+        closestCell = new List<GameObject>();
+        //iterate over each placeur
+        foreach(GameObject placeur in placeurs)
+        {
+            float smallestDistance = 200f;
 
-        GameObject currentClosestCell = null;
+            //iterate each cell
+            foreach(GameObject cell in cells)
+            {  
+                //compute distance 
+                float currentDistance = Vector3.Distance(placeur.transform.position, cell.transform.position);
+
+                if (currentDistance <= smallestDistance)
+                {
+                    smallestDistance = currentDistance;
+
+                    closestCell.Add(cell);
+                }
+            }
+
+        }
+        Debug.Log(closestCell.Count);
 
         foreach(GameObject cell in cells)
-        {
-            float currentDistance = Vector3.Distance(Placeur.transform.position, cell.transform.position);
-
-            if(currentDistance <= smallestDistance)
-            {
-                smallestDistance = currentDistance;
-
-                currentClosestCell = cell;
-            }
-        }
-
-        foreach(GameObject cell in cells )
         {
             Transform CellTransform = cell.transform;
 
@@ -152,17 +164,15 @@ public class dragin_object : MonoBehaviour
 
             Renderer cubeRenderer = cellCube.GetComponent<Renderer>();
 
-            if (cell != currentClosestCell)
-            {
-                cubeRenderer.enabled = false;
-            }
-            else
+            if (closestCell.Contains(cell))
             {
                 cubeRenderer.enabled = true;
             }
+            else
+            {
+                cubeRenderer.enabled = false;
+            }
         }
-        
-        return currentClosestCell;
          
     }
 
@@ -197,11 +207,6 @@ public class dragin_object : MonoBehaviour
         }
 
         transform.position = newNewTransform;
-    }
-
-    private bool isPlaceCorrect()
-    {
-        return true;
     }
 
     private IEnumerator RotateBlock()

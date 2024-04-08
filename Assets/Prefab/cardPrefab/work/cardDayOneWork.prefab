@@ -236,9 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d652d3817416c4648b3495bf4660f006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Placeur: {fileID: 0}
   returnTime: 0.6
-  correctMinimalDistance: 3
+  correctMinimalDistance: 0.01
   placingTime: 0.06
   timeToRotate: 0.2
 --- !u!1 &2991909916609506192
