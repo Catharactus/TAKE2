@@ -112,8 +112,14 @@ public class InitNewCard : MonoBehaviour
         {
             if (obj.tag.Contains("work"))
             {
-                Instantiate(obj, instancedPosition, obj.transform.rotation);
+                obj.transform.position = instancedPosition;
                 workCard.Add(obj);
+
+                Transform first_child = obj.transform.GetChild(0);
+                Transform drag_helper = first_child.transform.GetChild(0);
+
+                dragin_object script = drag_helper.GetComponent<dragin_object>();
+                script.InitBlok();
             }
         }
     }
@@ -123,12 +129,20 @@ public class InitNewCard : MonoBehaviour
         //in allcardForToday find the one that are mood related 
         List<GameObject> moodCard = new List<GameObject>();
 
+        Vector3 instancedPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f);
+
         foreach (GameObject obj in allCardForToday)
         {
             if (obj.tag.Contains("mood"))
             {
-                Instantiate(obj, transform.position, obj.transform.rotation);
+                obj.transform.position = instancedPosition;
                 moodCard.Add(obj);
+
+                Transform first_child = obj.transform.GetChild(0);
+                Transform drag_helper = first_child.transform.GetChild(0);
+
+                dragin_object script = drag_helper.GetComponent<dragin_object>();
+                script.InitBlok();
             }
         }
     }
@@ -138,12 +152,20 @@ public class InitNewCard : MonoBehaviour
         //in allcardForToday find the one that are leisure related 
         List<GameObject> leisureCard = new List<GameObject>();
 
+        Vector3 instancedPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f);
+
         foreach (GameObject obj in allCardForToday)
         {
             if (obj.tag.Contains("leisure"))
             {
-                Instantiate(obj, transform.position, obj.transform.rotation);
+                obj.transform.position = instancedPosition;
                 leisureCard.Add(obj);
+
+                Transform first_child = obj.transform.GetChild(0);
+                Transform drag_helper = first_child.transform.GetChild(0);
+
+                dragin_object script = drag_helper.GetComponent<dragin_object>();
+                script.InitBlok();
             }
         }
     }

@@ -24,15 +24,13 @@ public class dragin_object : MonoBehaviour
 
     private void Start()
     {
-
-        InitBlok();
-
+        //InitBlok();
     }
 
     public void InitBlok()
     {
         dragingOffset = transform.position - Placeur.transform.position;
-        blockInitialPosition = Placeur.transform.position;
+        blockInitialPosition = transform.position;
         cells = GameObject.FindGameObjectsWithTag("plan");
     }
     
@@ -132,7 +130,7 @@ public class dragin_object : MonoBehaviour
     {
 
         float elaspeTime = 0f;
-        Vector3 currentBlockPos = Placeur.transform.position;
+        Vector3 currentBlockPos = transform.position;
 
         while (elaspeTime < returnTime)
         {
@@ -148,16 +146,17 @@ public class dragin_object : MonoBehaviour
     {
         float elaspeTime = 0f;
         Vector3 currentBlockPos = transform.position;
-        Vector3 newTransform = new Vector3(cell.transform.position.x, cell.transform.position.y, Placeur.transform.position.z-0.5f);
+        Vector3 newTransform = new Vector3(cell.transform.position.x, cell.transform.position.y, transform.position.z);
+        Vector3 newNewTransform = new Vector3(newTransform.x + dragingOffset.x, newTransform.y+dragingOffset.y, newTransform.z);
 
         while (elaspeTime < placingTime)
         {
-            transform.position = Vector3.Lerp(currentBlockPos, newTransform, elaspeTime / placingTime);
+            transform.position = Vector3.Lerp(currentBlockPos, newNewTransform, elaspeTime / placingTime);
             elaspeTime += Time.deltaTime;
             yield return null;  
         }
 
-        Placeur.transform.position = newTransform;
-        transform.position = Placeur.transform.position + dragingOffset;
+        transform.position = newNewTransform;
+        //transform.position = Placeur.transform.position;
     }
 }
