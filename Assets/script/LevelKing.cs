@@ -12,6 +12,13 @@ public class LevelKing : MonoBehaviour
     string dayFour = "four";
     string dayFive = "five";
 
+    GameObject[] cells;
+
+    private void Awake()
+    {
+        cells = GameObject.FindGameObjectsWithTag("plan");
+    }
+
     public string GetCurrentDay()
     {
         return currentDay;
@@ -19,7 +26,6 @@ public class LevelKing : MonoBehaviour
 
     public void UpdateCurrentDay(int day)
     {
-        Debug.Log(day + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 
         switch(day)
         {
@@ -52,6 +58,11 @@ public class LevelKing : MonoBehaviour
 
             }
         }
+    }
+
+    public void UpdateCells()
+    {
+
     }
 
 }

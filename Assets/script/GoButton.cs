@@ -22,7 +22,7 @@ public class GoButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-
+        ResetDay();
     }
 
     private void ResetDay()

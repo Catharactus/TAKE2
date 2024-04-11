@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class dragin_object : MonoBehaviour
@@ -26,7 +27,11 @@ public class dragin_object : MonoBehaviour
     private List<GameObject> placeurs = new List<GameObject>();
     private GameObject firstPlaceur;
 
+    private bool getfirstPos;
+
     private Vector3 blockOffset;
+
+    public GameObject cubeTest;
 
     private void explorefamily(Transform parent)
     {
@@ -62,10 +67,21 @@ public class dragin_object : MonoBehaviour
                     firstPlaceurFound=true;
                 }
             }
+
+            if(child.tag == "block")
+            {
+                block = child;
+            }
+        }
+    
+        if(getfirstPos == false)
+        {
+            //blockInitialPosition = transform.position;
+            blockInitialPosition = GetCenterPoint(placeurs);
+            blockOffset = blockInitialPosition - firstPlaceur.transform.position;
+            getfirstPos = true;
         }
         
-        blockInitialPosition = transform.position;
-        blockOffset = blockInitialPosition - firstPlaceur.transform.position;
         
     }
     
@@ -77,6 +93,9 @@ public class dragin_object : MonoBehaviour
 
     private void OnMouseDown()
     {
+        cells.Clone();
+        cells = GameObject.FindGameObjectsWithTag("plan");
+
         // Calculate the offset between the object's position and the mouse position
         mousePositionOffset = gameObject.transform.position - GetMouseWorldPosition();
     }
@@ -112,7 +131,7 @@ public class dragin_object : MonoBehaviour
                 if (Vector3.Distance(cell.transform.position, placeur.transform.position) <= correctMinimalDistance)
                 {
                     placeurCheck = true;
-                    Debug.Log("placeur " + placeur + "at pos " + Vector3.Distance(cell.transform.position, placeur.transform.position));
+                    //Debug.Log("placeur " + placeur + "at pos " + Vector3.Distance(cell.transform.position, placeur.transform.position));
                 }
 
             }
@@ -209,7 +228,7 @@ public class dragin_object : MonoBehaviour
 
         foreach(GameObject cell in cells)
         {
-            if(Vector3.Distance(placeur.transform.position, cell.transform.position) <= correctMinimalDistance)
+            if(Vector3.Distance(placeur.transform.position, cell.transform.position) <= correctMinimalDistance + 0.1f)
             {
                 closestCell = cell.transform.position;
             }
@@ -230,16 +249,20 @@ public class dragin_object : MonoBehaviour
             elaspeTime += Time.deltaTime;
             yield return null;
         }
-
-        transform.position = blockInitialPosition;
     }
 
     private IEnumerator PlaceCell(GameObject cell)
     {
         float elaspeTime = 0f;
-        Vector3 currentBlockPos = transform.position;
-        Vector3 closestCell = findClosestCellButOne(firstPlaceur);
-        Vector3 NewTransform = new Vector3(closestCell.x + blockOffset.x, closestCell.y + blockOffset.y, transform.position.z);
+        //Vector3 currentBlockPos = transform.position;
+        //Vector3 closestCell = findClosestCellButOne(firstPlaceur);
+        Vector3 currentBlockPos = GetCenterPoint(placeurs);
+
+        Instantiate(cubeTest, currentBlockPos, Quaternion.identity);
+        Vector3 closestCellPos = GetCenterPoint(closestCell);
+        Instantiate(cubeTest, closestCellPos, Quaternion.identity);
+        //Vector3 NewTransform = new Vector3(closestCellPos.x + blockOffset.x, closestCellPos.y + blockOffset.y, transform.position.z);
+        Vector3 NewTransform = new Vector3(closestCellPos.x , closestCellPos.y , transform.position.z);
 
         while (elaspeTime < placingTime)
         {
@@ -255,7 +278,7 @@ public class dragin_object : MonoBehaviour
     {
         float elaspeTime = 0f;
         Transform blockTransform = block.transform;
-        Vector3 blockPosition = block.GetComponent<Renderer>().bounds.center;
+        //Vector3 blockPosition = block.GetComponent<Renderer>().bounds.center;
         Quaternion rotatedBlock = Quaternion.Euler(blockTransform.rotation.eulerAngles + new Vector3(0f, 0f, 90f));
 
 
@@ -265,5 +288,19 @@ public class dragin_object : MonoBehaviour
             elaspeTime += Time.deltaTime;
             yield return null;
         }
+
+        InitBlok();
+    }
+
+    Vector3 GetCenterPoint(List<GameObject> list)
+    {
+        Vector3 sum = Vector3.zero;
+
+        foreach(GameObject go in list)
+        {
+            sum += go.transform.position;
+        }
+
+        return sum/ closestCell.Count;
     }
 }

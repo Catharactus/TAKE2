@@ -25,7 +25,7 @@ public class InitNewCard : MonoBehaviour
         }
 
         todaysCard = new List<GameObject>();
-        Debug.Log("card before" + allCardForToday.Count);
+        //Debug.Log("card before" + allCardForToday.Count);
 
         //Debug.Log(FindCorrectInitPreset(Tag));
         int preset = FindCorrectInitPreset(CardTag);
@@ -34,7 +34,7 @@ public class InitNewCard : MonoBehaviour
         //Debug.Log("dayTracker equal after update " + DayTracker);
 
         GetAllCardForToday();
-        Debug.Log("Card after add" + allCardForToday.Count);
+        //Debug.Log("Card after add" + allCardForToday.Count);
 
         switch (preset)
         {
@@ -62,7 +62,7 @@ public class InitNewCard : MonoBehaviour
     {
 
         int preset = 0;
-        Debug.Log(CardTag);
+        //Debug.Log(CardTag);
 
         if(CardTag == "work")
         {
@@ -101,7 +101,7 @@ public class InitNewCard : MonoBehaviour
 
         GameObject[] allObjGame = GameObject.FindObjectsOfType<GameObject>();
 
-        Debug.Log("todays day " + DayTracker);
+        //Debug.Log("todays day " + DayTracker);
 
         foreach (GameObject obj in allObjGame)
         {
@@ -130,9 +130,8 @@ public class InitNewCard : MonoBehaviour
                 //Debug.Log(obj);
 
                 Transform first_child = obj.transform.GetChild(0);
-                //Debug.Log(first_child);
                 Transform drag_helper = first_child.transform.GetChild(0);
-                //Debug.Log(drag_helper);
+                Debug.Log(drag_helper);
 
                 dragin_object script = drag_helper.GetComponent<dragin_object>();
                 script.InitBlok();

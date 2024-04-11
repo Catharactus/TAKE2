@@ -131,10 +131,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 889878242211556848, guid: 9353bacd55131444f82e547674a97fb8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1871815766966795217, guid: 9353bacd55131444f82e547674a97fb8,
         type: 3}
       propertyPath: m_Name
       value: cardDayOneWork
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535429026341365961, guid: 9353bacd55131444f82e547674a97fb8,
+        type: 3}
+      propertyPath: m_TagString
+      value: block
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043699821512873321, guid: 9353bacd55131444f82e547674a97fb8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3472047763295729799, guid: 9353bacd55131444f82e547674a97fb8,
         type: 3}
@@ -194,16 +209,22 @@ PrefabInstance:
     - target: {fileID: 3737871724695219685, guid: 9353bacd55131444f82e547674a97fb8,
         type: 3}
       propertyPath: correctMinimalDistance
-      value: 1.4
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595800990563249358, guid: 9353bacd55131444f82e547674a97fb8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697140548841399448, guid: 9353bacd55131444f82e547674a97fb8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3609794692725114108, guid: 9353bacd55131444f82e547674a97fb8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1019723559}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9353bacd55131444f82e547674a97fb8, type: 3}
 --- !u!1 &624970291
 GameObject:
@@ -528,54 +549,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8528b821b7b2b1f4cae7a8892626902b, type: 3}
---- !u!1 &1019723557 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3609794692725114108, guid: 9353bacd55131444f82e547674a97fb8,
-    type: 3}
-  m_PrefabInstance: {fileID: 578776548}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1019723559
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019723557}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &1643442286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -584,10 +557,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 163525109075843018, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 163525109075843018, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.947055
+      objectReference: {fileID: 0}
     - target: {fileID: 1729565860717594241, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
         type: 3}
       propertyPath: m_Name
       value: ui_blocking
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942627865309367360, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942627865309367360, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.42
       objectReference: {fileID: 0}
     - target: {fileID: 3081533168034880021, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
         type: 3}
@@ -639,10 +632,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4172255418466946629, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.305891
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172255418466946629, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.947055
+      objectReference: {fileID: 0}
     - target: {fileID: 7631337638339507605, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
         type: 3}
       propertyPath: m_TagString
       value: onglet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415868721874300722, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.832946
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415868721874300722, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.947055
       objectReference: {fileID: 0}
     - target: {fileID: 8785453071732356657, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
         type: 3}
@@ -1022,6 +1035,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2202370015087575444, guid: c32d665c88d8a1d4fba72cb423bd26c1,
+        type: 3}
+      propertyPath: correctMinimalDistance
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4934236650289370197, guid: c32d665c88d8a1d4fba72cb423bd26c1,
         type: 3}
       propertyPath: m_Name
