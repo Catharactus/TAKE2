@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 3737871724695219685, guid: 9353bacd55131444f82e547674a97fb8,
         type: 3}
       propertyPath: correctMinimalDistance
-      value: 1.2
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -644,6 +644,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: onglet
       objectReference: {fileID: 0}
+    - target: {fileID: 8785453071732356657, guid: a0ebfb28e38c8ad4e8de7a1bae38e639,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -889,7 +894,7 @@ PrefabInstance:
     - target: {fileID: 2662078011747757660, guid: f7edfb59c8acf2d459950078e51f61c9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.34
       objectReference: {fileID: 0}
     - target: {fileID: 2662078011747757660, guid: f7edfb59c8acf2d459950078e51f61c9,
         type: 3}

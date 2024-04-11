@@ -24,6 +24,9 @@ public class dragin_object : MonoBehaviour
     private List<GameObject> closestCell = new List<GameObject>();
     private GameObject block;
     private List<GameObject> placeurs = new List<GameObject>();
+    private GameObject firstPlaceur;
+
+    private Vector3 blockOffset;
 
     private void explorefamily(Transform parent)
     {
@@ -42,6 +45,8 @@ public class dragin_object : MonoBehaviour
         cells = GameObject.FindGameObjectsWithTag("plan");
         
         explorefamily(gameObject.transform);
+
+        bool firstPlaceurFound = false;
         
         //find placeurs 
         foreach(GameObject child in fullfamily)
@@ -49,21 +54,19 @@ public class dragin_object : MonoBehaviour
             if(child.tag == ("placeur"))
             {
                 placeurs.Add(child);
+
+                if(firstPlaceurFound == false)
+                {
+                    firstPlaceur = child;
+
+                    firstPlaceurFound=true;
+                }
             }
         }
         
         blockInitialPosition = transform.position;
+        blockOffset = blockInitialPosition - firstPlaceur.transform.position;
         
-        //dragingOffset = transform.position - Placeur.transform.position;
-
-        //get the block in the variable
-        //Transform baseFinder = transform;
-        //Transform placeur = baseFinder.transform.GetChild(0);
-        //Transform blockTransform = placeur.transform.GetChild(0);
-
-        //block = blockTransform.gameObject;
-
-        //Debug.Log(block);
     }
     
     private Vector3 GetMouseWorldPosition()
@@ -125,7 +128,7 @@ public class dragin_object : MonoBehaviour
         if(placeursCheck)
         {
             //place tile
-            //StartCoroutine(PlaceCell(closestCell));
+            StartCoroutine(PlaceCell(firstPlaceur));
         }
         else
         {
@@ -133,6 +136,23 @@ public class dragin_object : MonoBehaviour
             StartCoroutine(ReturnToInitialPos());
         }
 
+        resetCells();
+
+    }
+
+    private void resetCells()
+    {
+        foreach(GameObject cell in cells)
+        {
+            Transform cubeShow = cell.transform.GetChild(0);
+
+            Renderer cellRenderer = cubeShow.GetComponent<Renderer>();
+
+            if (cellRenderer.enabled == true)
+            {
+                cellRenderer.enabled = false;
+            }
+        }
     }
 
     private void FindClosestCell()
@@ -183,6 +203,21 @@ public class dragin_object : MonoBehaviour
          
     }
 
+    private Vector3 findClosestCellButOne(GameObject placeur)
+    {
+        Vector3 closestCell = new Vector3();
+
+        foreach(GameObject cell in cells)
+        {
+            if(Vector3.Distance(placeur.transform.position, cell.transform.position) <= correctMinimalDistance)
+            {
+                closestCell = cell.transform.position;
+            }
+        }
+
+        return closestCell;
+    }
+
     private IEnumerator ReturnToInitialPos()
     {
 
@@ -203,17 +238,17 @@ public class dragin_object : MonoBehaviour
     {
         float elaspeTime = 0f;
         Vector3 currentBlockPos = transform.position;
-        Vector3 newTransform = new Vector3(cell.transform.position.x, cell.transform.position.y, transform.position.z);
-        Vector3 newNewTransform = new Vector3(newTransform.x + dragingOffset.x, newTransform.y+dragingOffset.y, newTransform.z);
+        Vector3 closestCell = findClosestCellButOne(firstPlaceur);
+        Vector3 NewTransform = new Vector3(closestCell.x + blockOffset.x, closestCell.y + blockOffset.y, transform.position.z);
 
         while (elaspeTime < placingTime)
         {
-            transform.position = Vector3.Lerp(currentBlockPos, newNewTransform, elaspeTime / placingTime);
+            transform.position = Vector3.Lerp(currentBlockPos, NewTransform, elaspeTime / placingTime);
             elaspeTime += Time.deltaTime;
             yield return null;  
         }
 
-        transform.position = newNewTransform;
+        transform.position = NewTransform;
     }
 
     private IEnumerator RotateBlock()

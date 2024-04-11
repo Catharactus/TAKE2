@@ -10,7 +10,7 @@ public class GoButton : MonoBehaviour
 
     LevelKing level;
 
-    private void Start()
+    private void Awake()
     {
         currentDay = 1;
 
@@ -22,6 +22,11 @@ public class GoButton : MonoBehaviour
 
     private void OnMouseDown()
     {
+
+    }
+
+    private void ResetDay()
+    {
         currentDay++;
 
         level.UpdateCurrentDay(currentDay);
@@ -29,6 +34,7 @@ public class GoButton : MonoBehaviour
         GameObject Onglet = GameObject.FindGameObjectWithTag("onglet");
         OngletDelaer scriptOnglet = Onglet.GetComponent<OngletDelaer>();
         scriptOnglet.InitOnglets();
+
     }
 
 }

@@ -12,7 +12,7 @@ public class InitNewCard : MonoBehaviour
 
     public void InitCard(string CardTag)
     {
-        Debug.Log("init for tag " + CardTag);
+        //Debug.Log("init for tag " + CardTag);
 
         //reset allCardForToday
         allCardForToday = new List<GameObject>();
@@ -31,7 +31,7 @@ public class InitNewCard : MonoBehaviour
         int preset = FindCorrectInitPreset(CardTag);
 
         UpdateDaytracker();
-        Debug.Log("dayTracker equal after update " + DayTracker);
+        //Debug.Log("dayTracker equal after update " + DayTracker);
 
         GetAllCardForToday();
         Debug.Log("Card after add" + allCardForToday.Count);
@@ -55,13 +55,14 @@ public class InitNewCard : MonoBehaviour
                 InitCardAsLeisure();
                 break;
         }
-
+        
     }
 
     int FindCorrectInitPreset(string CardTag)
     {
 
         int preset = 0;
+        Debug.Log(CardTag);
 
         if(CardTag == "work")
         {
@@ -100,7 +101,7 @@ public class InitNewCard : MonoBehaviour
 
         GameObject[] allObjGame = GameObject.FindObjectsOfType<GameObject>();
 
-        //Debug.Log("todays day " + DayTracker);
+        Debug.Log("todays day " + DayTracker);
 
         foreach (GameObject obj in allObjGame)
         {

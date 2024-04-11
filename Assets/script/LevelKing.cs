@@ -19,6 +19,8 @@ public class LevelKing : MonoBehaviour
 
     public void UpdateCurrentDay(int day)
     {
+        Debug.Log(day + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+
         switch(day)
         {
             case 1:
